@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+
+cd /CookieCloud/api
+
+umask "${UMASK}"
+
+exec s6-setuidgid "${PUID}":"${PGID}" node app.js
