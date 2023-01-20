@@ -97,10 +97,13 @@ else
     export PATH=${PATH}:/usr/lib/chromium
 fi
 
-if [ ! -f "${bgmi_nginx_conf}" ]; then
-	touch "${bgmi_nginx_conf}"
+if [ ! -f "/etc/nginx/http.d/default.conf" ]; then
+	touch /etc/nginx/http.d/default.conf
+else
+    rm -rf /etc/nginx/http.d/default.conf
+    touch /etc/nginx/http.d/default.conf
 fi
-cat > "${bgmi_nginx_conf}" << EOF
+cat > "/etc/nginx/http.d/default.conf" << EOF
 server {
     listen 3080 default_server;
     server_name _;
