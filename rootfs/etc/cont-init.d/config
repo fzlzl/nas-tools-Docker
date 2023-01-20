@@ -102,7 +102,7 @@ if [ ! -f "${bgmi_nginx_conf}" ]; then
 fi
 cat > "${bgmi_nginx_conf}" << EOF
 server {
-    listen 80 default_server;
+    listen 3080 default_server;
     server_name _;
     autoindex on;
     charset utf-8;
