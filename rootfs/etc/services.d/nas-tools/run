@@ -2,6 +2,8 @@
 
 cd ${WORKDIR}
 
+echo "以PUID=${PUID}，PGID=${PGID}的身份启动程序..."
+
 umask "${UMASK}"
 
 exec s6-setuidgid "${PUID}":"${PGID}" "$(which dumb-init)" "$(which pm2-runtime)" start run.py -n NAStool --interpreter python3

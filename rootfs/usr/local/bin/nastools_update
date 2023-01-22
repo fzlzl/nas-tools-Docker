@@ -85,38 +85,3 @@ else
     echo "程序自动升级已关闭，如需自动升级请在创建容器时设置环境变量：NASTOOL_AUTO_UPDATE=true"
 fi
 
-echo "以PUID=${PUID}，PGID=${PGID}的身份启动程序..."
-
-if [ "${NASTOOL_VERSION}" = "lite" ]; then
-    mkdir -p /.pm2
-    chown -R "${PUID}":"${PGID}" "${WORKDIR}" /config /.pm2
-else
-    mkdir -p /.local
-    mkdir -p /.pm2
-    chown -R "${PUID}":"${PGID}" "${WORKDIR}" /config /usr/lib/chromium /.local /.pm2
-    export PATH=${PATH}:/usr/lib/chromium
-fi
-
-if [ ! -f "/etc/nginx/http.d/default.conf" ]; then
-	touch /etc/nginx/http.d/default.conf
-else
-    rm -rf /etc/nginx/http.d/default.conf
-    touch /etc/nginx/http.d/default.conf
-fi
-cat > "/etc/nginx/http.d/default.conf" << EOF
-server {
-    listen 3080 default_server;
-    server_name _;
-    autoindex on;
-    charset utf-8;
-    location ${API_ROOT} {
-        proxy_pass http://127.0.0.1:8088;
-    }
-    location / {
-        proxy_pass http://127.0.0.1:3000;
-        keepalive_timeout 6000s;
-        proxy_read_timeout 6000s;
-    }
-}
-
-EOF
