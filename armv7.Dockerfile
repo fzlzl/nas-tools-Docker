@@ -10,7 +10,8 @@ RUN apk add --no-cache libffi-dev \
     && curl https://dl.min.io/client/mc/release/linux-${ARCH}/mc --create-dirs -o /usr/bin/mc \
     && chmod +x /usr/bin/mc \
     && apk del libffi-dev \
-    && npm install pm2 -g \
+    && npm install pnpm -g \
+    && pnpm add -g pm2 \
     && rm -rf /tmp/* /root/.cache /var/cache/apk/*
 ENV LANG="C.UTF-8" \
     TZ="Asia/Shanghai" \
