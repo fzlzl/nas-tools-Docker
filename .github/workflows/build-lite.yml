@@ -283,7 +283,7 @@ jobs:
       - name: create version tag
         if: steps.set-version.outputs.version != '/master'
         run: |
-          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }} \
+          docker buildx imagetools create -t ${{ secrets.DOCKER_USERNAME }}/nas-tools:${{ steps.set-version.outputs.version }}-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:armv7-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:armv6-lite \
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:arm64v8-lite \
