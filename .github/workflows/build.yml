@@ -2,6 +2,8 @@ name: 构建 NAStool 镜像
 
 on:
     workflow_dispatch:
+    release:
+        types: [published]
 
 jobs:
   armv7:
