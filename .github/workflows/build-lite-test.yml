@@ -31,9 +31,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: 386.lite.Dockerfile
+          file: s390x.lite.Dockerfile
           platforms: |
-            linux/386
+            linux/s390x
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/nas-tools:test-lite
