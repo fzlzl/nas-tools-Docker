@@ -10,6 +10,8 @@
 | arm64v8 \| arm64 |    ✅     | arm64v8 |
 |  armv7 \| armhf  |    ✅     |  armv7  |
 
+总标签：`docker pull ddsderek/nas-tools:latest`
+
 ### Lite版本
 
 |       架构       | 支持情况 |     标签     |
@@ -21,3 +23,4 @@
 |    i386\| x86    |    ✅     |  i386-lite   |
 |      s390x       |    ✅     |  s390x-lite  |
 
+总标签：`docker pull ddsderek/nas-tools:lite`
