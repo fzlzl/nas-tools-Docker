@@ -6,8 +6,7 @@ RUN apk add --no-cache libffi-dev \
     && echo "${TZ}" > /etc/timezone \
     && ln -sf /usr/bin/python3 /usr/bin/python \
     && curl https://rclone.org/install.sh | bash \
-    && if [ "$(uname -m)" = "x86_64" ]; then ARCH=amd64; elif [ "$(uname -m)" = "aarch64" ]; then ARCH=arm64; elif [ "$(uname -m)" = "armv7l" ]; then ARCH=arm; fi \
-    && curl https://dl.min.io/client/mc/release/linux-${ARCH}/mc --create-dirs -o /usr/bin/mc \
+    && curl https://dl.min.io/client/mc/release/linux-arm/mc --create-dirs -o /usr/bin/mc \
     && chmod +x /usr/bin/mc \
     && pip install --upgrade pip setuptools wheel \
     && pip install cython \
@@ -23,6 +22,8 @@ ENV LANG="C.UTF-8" \
     NASTOOL_VERSION=master \
     PS1="\u@\h:\w \$ " \
     REPO_URL="https://github.com/jxxghp/nas-tools.git" \
+    PYPI_MIRROR="https://pypi.tuna.tsinghua.edu.cn/simple" \
+    ALPINE_MIRROR="mirrors.ustc.edu.cn" \
     PUID=0 \
     PGID=0 \
     UMASK=000 \
